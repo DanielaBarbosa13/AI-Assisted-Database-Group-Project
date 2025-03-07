@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Assisted Database</title>
+</head>
+<body>
+    <h1>AI-Assisted Database</h1>
+
+    <!-- Form for submitting a query -->
+    <form method="POST" action="/">
+        <label for="query">Enter your query:</label>
+        <input type="text" id="query" name="query" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Displaying the AI response if present -->
+    {% if response %}
+        <h2>AI Response:</h2>
+        <pre>{{ response }}</pre>
+    {% endif %}
+
+    <!-- Displaying error message if there's an error -->
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
