@@ -1,4 +1,4 @@
-AI-Assisted Database Group Project
+##AI-Assisted Database Group Project
 
 📌 Project Overview
 
