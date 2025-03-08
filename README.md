@@ -1,5 +1,6 @@
 # AI-Assisted Database Group Project
 
+
 ## 📌 Project Overview
 
 This project aims to create an **AI-integrated database** that allows users to request information in a conversational manner rather than using traditional command-line queries. The AI component, powered by OpenAI's NLP model, will also provide **insights** into compiled data upon user request.
@@ -7,6 +8,7 @@ This project aims to create an **AI-integrated database** that allows users to r
 Our initial goal is to build a **generic template database**, which can later be specialized for industries such as **healthcare** or **education**.
 
 ---
+
 
 ## 🛠️ Technologies Used
 
