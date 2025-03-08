@@ -1,17 +1,12 @@
-AI-Assisted-Database-Group-Project
+AI-Assisted Database Group Project
 
-
-
-
-
-
-Overview 🧠
+📌 Project Overview
 
 This project aims to create an AI-integrated database that allows users to request information in a conversational manner rather than using traditional command-line queries. The AI component, powered by OpenAI's NLP model, will also provide insights into compiled data upon user request.
 
 Our initial goal is to build a generic template database, which can later be specialized for industries such as healthcare or education.
 
-Technologies Used 🛠️
+🛠️ Technologies Used
 
 🐍 Python – Main programming language for backend development.
 
@@ -23,21 +18,21 @@ Technologies Used 🛠️
 
 🤖 OpenAI NLP Model – For processing conversational queries and generating insights.
 
-Features 🚀
+🚀 Key Features
 
-🗨️ AI-powered conversational queries – Users can interact with the database using natural language.
+🗨️ AI-powered Conversational Queries – Users can interact with the database using natural language.
 
-📊 AI-generated insights and analysis – The system provides data-driven insights, such as trends, anomalies, and predictions.
+📊 AI-generated Insights and Analysis – The system provides data-driven insights, such as trends, anomalies, and predictions.
 
-🔌 API integration – Built with Flask to facilitate seamless communication between components.
+🔌 API Integration – Built with Flask to facilitate seamless communication between components.
 
-🔧 Flexible architecture – Can be extended for different industries.
+🔧 Flexible Architecture – Can be extended for different industries.
 
-📈 Data visualization support – (Future enhancement) Graphical representation of key metrics.
+📈 Data Visualization Support – (Future enhancement) Graphical representation of key metrics.
 
-Installation ⚙️
+⚙️ Installation Guide
 
-Prerequisites 📝
+📝 Prerequisites
 
 Ensure you have the following installed on your system:
 
@@ -47,7 +42,7 @@ Ensure you have the following installed on your system:
 
 📦 pip (Python package manager)
 
-Setup 🔧
+🔧 Setup Instructions
 
 Clone the repository:
 
@@ -68,14 +63,14 @@ Run the application:
 
 python main.py
 
-Usage Example 💬
+💬 Usage Example
 
 After running the application, users can interact with the AI by querying the database using natural language. Example:
 
 User: "Show me the total sales for the last quarter."
 AI: "Total sales for Q4 2024 were $250,000, showing a 12% increase from Q3."
 
-Contribution 🤝
+🤝 Contributing to the Project
 
 We welcome contributions! To contribute:
 
@@ -87,17 +82,17 @@ We welcome contributions! To contribute:
 
 🔄 Submit a pull request.
 
-Testing 🧪
+🧪 Running Tests
 
 To run tests, use:
 
 pytest tests/
 
-License 📜
+📜 License
 
 This project is open-source and available under the MIT License.
 
-Contact 📩
+📩 Contact & Support
 
 For any inquiries or contributions, feel free to reach out via GitHub Issues or Discussion forums.
 
