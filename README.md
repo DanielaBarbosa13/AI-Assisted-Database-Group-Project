@@ -17,6 +17,8 @@ Our initial goal is to build a **generic template database**, which can later be
 - 🗄️ **MongoDB** – NoSQL database for storing and retrieving data efficiently.
 - 🎨 **CSS** – Used for styling the front-end interface.
 - 🤖 **OpenAI NLP Model** – For processing conversational queries and generating insights.
+- 📡 RESTful API – Enables seamless integration with external applications.
+- 🛠️ Docker – Containerized deployment for easy scalability.
 
 ---
 
