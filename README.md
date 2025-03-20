@@ -29,6 +29,8 @@ Our initial goal is to build a **generic template database**, which can later be
 - **🔌 API Integration** – Built with Flask to facilitate seamless communication between components.
 - **🔧 Flexible Architecture** – Can be extended for different industries.
 - **📈 Data Visualization Support** – *(Future enhancement)* Graphical representation of key metrics.
+- 🔒 User Authentication & Authorization – Secure access to the database.
+- 📁 Data Import & Export – Support for uploading and exporting data in various formats (CSV, JSON, etc.).
 
 ---
 
