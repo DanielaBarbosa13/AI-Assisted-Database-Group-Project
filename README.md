@@ -9,12 +9,12 @@ Our initial goal is to build a **generic template database**, which can later be
 
 ---
 ## 📜 Code of Conduct
-# 👥 Our Pledge
+### 👥 Our Pledge
 We, as contributors and maintainers, are committed to fostering a welcoming, safe, and respectful community for everyone. We welcome participation from people of all backgrounds and identities, including but not limited to race, gender, sexual orientation, gender identity and expression, ability, age, nationality, religion, socioeconomic status, and experience level.
 
 We pledge to act and interact in ways that contribute to an open, inclusive, and harassment-free environment.
 
-# 🌟 Our Standards
+### 🌟 Our Standards
 Examples of behaviour that contributes to a positive environment include:
 
 ✅ Using welcoming and inclusive language
@@ -41,7 +41,7 @@ Examples of unacceptable behaviour include:
 
 🚫 Dismissing or talking over people based on identity or experience
 
-# 🧑‍⚖️ Our Responsibilities
+### 🧑‍⚖️ Our Responsibilities
 Project maintainers are responsible for:
 
 Clarifying standards of acceptable behaviour
@@ -52,7 +52,7 @@ Maintaining confidentiality when needed to protect privacy or safety
 
 Applying the code of conduct consistently and fairly to everyone
 
-# 📍 Scope
+### 📍 Scope
 This Code of Conduct applies within all project spaces, including:
 
 GitHub repositories (issues, pull requests, discussions)
@@ -63,14 +63,14 @@ Social media posts related to the project
 
 In-person events and online gatherings related to the community
 
-# 🚨 Reporting Issues
+### 🚨 Reporting Issues
 If you experience or witness unacceptable behaviour, please report it by contacting the project maintainers at:
 
 📧 [INSERT EMAIL HERE]
 
 All reports will be handled confidentially and with respect. We commit to investigating and addressing all reports promptly and fairly.
 
-# ⚖️ Enforcement
+### ⚖️ Enforcement
 Maintainers have the right and responsibility to:
 
 Remove comments, commits, code, issues, or other contributions that violate this Code of Conduct
@@ -79,7 +79,7 @@ Temporarily or permanently ban contributors for unacceptable behaviour
 
 Repeated or severe violations may result in a permanent ban from the project and its community spaces.
 
-# 🤝 Attribution
+### 🤝 Attribution
 This Code of Conduct is adapted from the Contributor Covenant, version 2.1.
 
 ## 🛠️ Technologies Used
@@ -168,7 +168,7 @@ pytest tests/
 ## 🚀 Deployment Guide
 This section walks you through deploying the AI-Assisted Database Project using Docker (recommended for production environments).
 
-# 📝 Prerequisites
+### 📝 Prerequisites
 Ensure the following are installed on your system or server:
 
 🐍 Python 3.8+
@@ -181,7 +181,7 @@ Ensure the following are installed on your system or server:
 
 🌐 A cloud provider or VPS (e.g., AWS, DigitalOcean, Render)
 
-# 🐳 Docker Deployment 
+### 🐳 Docker Deployment 
 ```sh
 FROM python:3.9-slim
 
@@ -232,13 +232,13 @@ If you're deploying to a remote server, replace localhost with your server’s I
 
 --- 
 
-## 📜 License
+### 📜 License
 
 This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
-## 📩 Contact & Support
+### 📩 Contact & Support
 
 For any inquiries or contributions, feel free to reach out via **GitHub Issues** or **Discussion forums**.
 
