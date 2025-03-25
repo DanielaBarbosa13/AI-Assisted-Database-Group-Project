@@ -8,7 +8,79 @@ This project aims to create an **AI-integrated database** that allows users to r
 Our initial goal is to build a **generic template database**, which can later be specialized for industries such as **healthcare** or **education**.
 
 ---
+📜 Code of Conduct
+👥 Our Pledge
+We, as contributors and maintainers, are committed to fostering a welcoming, safe, and respectful community for everyone. We welcome participation from people of all backgrounds and identities, including but not limited to race, gender, sexual orientation, gender identity and expression, ability, age, nationality, religion, socioeconomic status, and experience level.
 
+We pledge to act and interact in ways that contribute to an open, inclusive, and harassment-free environment.
+
+🌟 Our Standards
+Examples of behaviour that contributes to a positive environment include:
+
+✅ Using welcoming and inclusive language
+
+✅ Being respectful of differing viewpoints and experiences
+
+✅ Providing constructive feedback gracefully
+
+✅ Accepting responsibility and apologizing when mistakes are made
+
+✅ Focusing on what is best for the community
+
+Examples of unacceptable behaviour include:
+
+🚫 Harassment, intimidation, or discrimination in any form
+
+🚫 Use of sexualized language or imagery
+
+🚫 Trolling, insulting or derogatory comments, and personal attacks
+
+🚫 Public or private harassment
+
+🚫 Publishing others’ private information without explicit permission
+
+🚫 Dismissing or talking over people based on identity or experience
+
+🧑‍⚖️ Our Responsibilities
+Project maintainers are responsible for:
+
+Clarifying standards of acceptable behaviour
+
+Taking appropriate and fair corrective action in response to any instances of unacceptable behaviour
+
+Maintaining confidentiality when needed to protect privacy or safety
+
+Applying the code of conduct consistently and fairly to everyone
+
+📍 Scope
+This Code of Conduct applies within all project spaces, including:
+
+GitHub repositories (issues, pull requests, discussions)
+
+Community chat platforms (e.g., Discord, Slack, etc.)
+
+Social media posts related to the project
+
+In-person events and online gatherings related to the community
+
+🚨 Reporting Issues
+If you experience or witness unacceptable behaviour, please report it by contacting the project maintainers at:
+
+📧 [INSERT EMAIL HERE]
+
+All reports will be handled confidentially and with respect. We commit to investigating and addressing all reports promptly and fairly.
+
+⚖️ Enforcement
+Maintainers have the right and responsibility to:
+
+Remove comments, commits, code, issues, or other contributions that violate this Code of Conduct
+
+Temporarily or permanently ban contributors for unacceptable behaviour
+
+Repeated or severe violations may result in a permanent ban from the project and its community spaces.
+
+🤝 Attribution
+This Code of Conduct is adapted from the Contributor Covenant, version 2.1.
 
 ## 🛠️ Technologies Used
 
@@ -93,7 +165,90 @@ pytest tests/
 ```
 
 ---
+🚀 Deployment Guide
+This section walks you through deploying the AI-Assisted Database Project using Docker (recommended for production environments).
 
+📝 Prerequisites
+Ensure the following are installed on your system or server:
+
+🐍 Python 3.8+
+
+🐳 Docker & Docker Compose
+
+🗄️ MongoDB (local or cloud instance)
+
+🔐 A properly configured .env file
+
+🌐 A cloud provider or VPS (e.g., AWS, DigitalOcean, Render)
+
+📁 Project Structure Overview
+bash
+Copy
+Edit
+project/
+├── main.py
+├── web_app.py
+├── ai_agent.py
+├── database_handler.py
+├── requirements.txt
+├── .env
+├── templates/
+├── static/              # Optional
+├── CODE_OF_CONDUCT.md
+├── DEPLOYMENT.md        # ← You're here!
+└── README.md
+🐳 Docker Deployment (Recommended)
+1. Create a Dockerfile
+dockerfile
+Copy
+Edit
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python", "main.py"]
+2. Create a docker-compose.yml file
+yaml
+Copy
+Edit
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+3. Run the Application
+bash
+Copy
+Edit
+docker-compose up --build
+The application will be available at:
+
+arduino
+Copy
+Edit
+http://localhost:5000
+If you're deploying to a remote server, replace localhost with your server’s IP or domain name.
 ## 📜 License
 
 This project is open-source and available under the [MIT License](LICENSE).
