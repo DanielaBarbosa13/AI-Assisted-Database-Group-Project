@@ -182,10 +182,6 @@ Ensure the following are installed on your system or server:
 🌐 A cloud provider or VPS (e.g., AWS, DigitalOcean, Render)
 
 # 🐳 Docker Deployment (Recommended)
-1. Create a Dockerfile
-dockerfile
-Copy
-Edit
 FROM python:3.9-slim
 
 WORKDIR /app
@@ -196,10 +192,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 CMD ["python", "main.py"]
+
+
+
 2. Create a docker-compose.yml file
-yaml
-Copy
-Edit
 version: '3.8'
 
 services:
@@ -221,17 +217,13 @@ services:
 
 volumes:
   mongo-data:
-3. Run the Application
-bash
-Copy
-Edit
-docker-compose up --build
-The application will be available at:
 
-arduino
-Copy
-Edit
-http://localhost:5000
+3. Run the Application
+docker-compose up --build
+
+The application will be available at:
+http://localhost:5000](http://localhost:5000)
+
 If you're deploying to a remote server, replace localhost with your server’s IP or domain name.
 
 --- 
