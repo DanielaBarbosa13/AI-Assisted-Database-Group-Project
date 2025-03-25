@@ -181,7 +181,8 @@ Ensure the following are installed on your system or server:
 
 🌐 A cloud provider or VPS (e.g., AWS, DigitalOcean, Render)
 
-# 🐳 Docker Deployment (Recommended)
+# 🐳 Docker Deployment 
+```sh
 FROM python:3.9-slim
 
 WORKDIR /app
@@ -192,10 +193,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 CMD ["python", "main.py"]
-
+```
 
 
 2. Create a docker-compose.yml file
+```sh
 version: '3.8'
 
 services:
@@ -217,13 +219,15 @@ services:
 
 volumes:
   mongo-data:
-
+```
 3. Run the Application
+```sh
 docker-compose up --build
-
+```
 The application will be available at:
+```sh
 http://localhost:5000](http://localhost:5000)
-
+```
 If you're deploying to a remote server, replace localhost with your server’s IP or domain name.
 
 --- 
