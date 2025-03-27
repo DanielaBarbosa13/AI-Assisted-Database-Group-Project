@@ -1,0 +1,144 @@
+AI-Assisted Database API Documentation
+
+Base URL
+
+https://api.ai-database.com/v1/
+
+Authentication
+
+All requests must include an API key in the headers:
+
+{
+  "Authorization": "Bearer YOUR_API_KEY"
+}
+
+Endpoints
+
+1. Create a New Record
+
+Endpoint: POST /records
+
+Description:
+Creates a new record in the AI-assisted database.
+
+Request Headers:
+
+{
+  "Content-Type": "application/json",
+  "Authorization": "Bearer YOUR_API_KEY"
+}
+
+Request Body:
+
+{
+  "collection": "users",
+  "data": {
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+  }
+}
+
+Response:
+
+{
+  "success": true,
+  "record_id": "abc123"
+}
+
+2. Retrieve a Record
+
+Endpoint: GET /records/{record_id}
+
+Description:
+Fetches details of a specific record by its ID.
+
+Request Headers:
+
+{
+  "Authorization": "Bearer YOUR_API_KEY"
+}
+
+Response:
+
+{
+  "record": {
+    "id": "abc123",
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+  }
+}
+
+3. Update a Record
+
+Endpoint: PUT /records/{record_id}
+
+Description:
+Updates an existing record in the database.
+
+Request Headers:
+
+{
+  "Content-Type": "application/json",
+  "Authorization": "Bearer YOUR_API_KEY"
+}
+
+Request Body:
+
+{
+  "data": {
+    "email": "john.new@example.com"
+  }
+}
+
+Response:
+
+{
+  "success": true,
+  "updated_record": {
+    "id": "abc123",
+    "name": "John Doe",
+    "email": "john.new@example.com"
+  }
+}
+
+4. Delete a Record
+
+Endpoint: DELETE /records/{record_id}
+
+Description:
+Deletes a record from the database.
+
+Request Headers:
+
+{
+  "Authorization": "Bearer YOUR_API_KEY"
+}
+
+Response:
+
+{
+  "success": true,
+  "message": "Record deleted successfully."
+}
+
+Error Codes
+
+Code
+
+Message
+
+400
+
+Bad Request
+
+401
+
+Unauthorized Access
+
+404
+
+Record Not Found
+
+500
+
+Internal Server Error
