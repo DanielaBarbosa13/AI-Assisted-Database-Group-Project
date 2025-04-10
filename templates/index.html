@@ -8,22 +8,40 @@
 <body>
     <h1>AI-Assisted Database</h1>
 
-    <!-- Form for submitting a query -->
+    <!-- Triggered Alerts Notification -->
+    {% if triggered_alerts %}
+        <div style="border:1px solid #ccc; background-color:#ffffdd; padding:15px; margin-bottom:20px;">
+            <h3>🔔 Triggered Alerts</h3>
+            <ul>
+                {% for alert in triggered_alerts %}
+                    <li><strong>{{ alert.user_email }}</strong> - {{ alert.condition.field }} {{ alert.condition.operator }} {{ alert.condition.value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <!-- Query Form -->
     <form method="POST" action="/">
+        <input type="hidden" name="form_type" value="query">
         <label for="query">Enter your query:</label>
         <input type="text" id="query" name="query" required>
         <button type="submit">Submit</button>
     </form>
 
-    <!-- Displaying the AI response if present -->
     {% if response %}
         <h2>AI Response:</h2>
         <pre>{{ response }}</pre>
     {% endif %}
 
-    <!-- Displaying error message if there's an error -->
     {% if error %}
         <p style="color:red;">{{ error }}</p>
     {% endif %}
+
+    <hr>
+    <!-- Navigation Links -->
+    <p>
+        <a href="/create_alert">+ Create New Alert</a> |
+        <a href="/alerts">🔍 View All Alerts</a>
+    </p>
 </body>
 </html>
