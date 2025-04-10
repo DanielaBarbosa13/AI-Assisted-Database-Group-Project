@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head><title>Edit Alert</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Alert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
 <body>
     <h1>Edit Alert</h1>
+
     <form method="POST">
-        <label>Email:</label><br>
-        <input type="text" name="user_email" value="{{ alert.user_email }}"><br><br>
+        <label for="user_email">Email:</label>
+        <input type="text" name="user_email" value="{{ alert.user_email }}" required>
 
-        <label>Field:</label><br>
-        <input type="text" name="field" value="{{ alert.condition.field }}"><br><br>
+        <label for="field">Field:</label>
+        <input type="text" name="field" value="{{ alert.condition.field }}" required>
 
-        <label>Operator:</label><br>
-        <select name="operator">
+        <label for="operator">Operator:</label>
+        <select name="operator" required>
             <option value="eq" {% if alert.condition.operator == 'eq' %}selected{% endif %}>Equal</option>
             <option value="gt" {% if alert.condition.operator == 'gt' %}selected{% endif %}>Greater Than</option>
             <option value="gte" {% if alert.condition.operator == 'gte' %}selected{% endif %}>Greater Than or Equal</option>
             <option value="lt" {% if alert.condition.operator == 'lt' %}selected{% endif %}>Less Than</option>
             <option value="lte" {% if alert.condition.operator == 'lte' %}selected{% endif %}>Less Than or Equal</option>
-        </select><br><br>
+        </select>
 
-        <label>Value:</label><br>
-        <input type="number" name="value" value="{{ alert.condition.value }}"><br><br>
+        <label for="value">Value:</label>
+        <input type="number" name="value" value="{{ alert.condition.value }}" required>
 
         <button type="submit">Save Changes</button>
     </form>
+
+    <p><a href="{{ url_for('alerts') }}">← Back to Alerts</a></p>
 </body>
 </html>

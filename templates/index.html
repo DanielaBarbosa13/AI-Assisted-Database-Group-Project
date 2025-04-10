@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Assisted Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <h1>AI-Assisted Database</h1>
 
     <!-- Triggered Alerts Notification -->
     {% if triggered_alerts %}
-        <div style="border:1px solid #ccc; background-color:#ffffdd; padding:15px; margin-bottom:20px;">
+        <div class="alert-box">
             <h3>🔔 Triggered Alerts</h3>
             <ul>
                 {% for alert in triggered_alerts %}
-                    <li><strong>{{ alert.user_email }}</strong> - {{ alert.condition.field }} {{ alert.condition.operator }} {{ alert.condition.value }}</li>
+                    <li>
+                        <strong>{{ alert.user_email }}</strong> –
+                        {{ alert.condition.field }} {{ alert.condition.operator }} {{ alert.condition.value }}
+                    </li>
                 {% endfor %}
             </ul>
         </div>
@@ -34,14 +38,15 @@
     {% endif %}
 
     {% if error %}
-        <p style="color:red;">{{ error }}</p>
+        <div class="alert-box error">{{ error }}</div>
     {% endif %}
 
     <hr>
+
     <!-- Navigation Links -->
     <p>
-        <a href="/create_alert">+ Create New Alert</a> |
-        <a href="/alerts">🔍 View All Alerts</a>
+        <a href="{{ url_for('create_alert') }}">+ Create New Alert</a> |
+        <a href="{{ url_for('alerts') }}">🔍 View All Alerts</a>
     </p>
 </body>
 </html>

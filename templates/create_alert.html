@@ -3,37 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Alert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <h1>Create a New Alert</h1>
+
     <form method="POST">
-        <label for="user_email">Your Email:</label><br>
-        <input type="email" name="user_email" required><br><br>
+        <label for="user_email">Your Email:</label>
+        <input type="email" name="user_email" required>
 
-        <label for="field">Field (e.g., age):</label><br>
-        <input type="text" name="field" required><br><br>
+        <label for="field">Field (e.g., age):</label>
+        <input type="text" name="field" required>
 
-        <label for="operator">Condition:</label><br>
+        <label for="operator">Condition:</label>
         <select name="operator">
             <option value="eq">= Equal</option>
             <option value="gt">> Greater Than</option>
             <option value="gte">≥ Greater Than or Equal</option>
             <option value="lt">< Less Than</option>
             <option value="lte">≤ Less Than or Equal</option>
-        </select><br><br>
+        </select>
 
-        <label for="value">Value:</label><br>
-        <input type="number" name="value" required><br><br>
+        <label for="value">Value:</label>
+        <input type="number" name="value" required>
 
         <button type="submit">Create Alert</button>
     </form>
 
     {% if alert_success %}
-        <p style="color:green;">{{ alert_success }}</p>
+        <div class="alert-box success">{{ alert_success }}</div>
     {% elif alert_error %}
-        <p style="color:red;">{{ alert_error }}</p>
+        <div class="alert-box error">{{ alert_error }}</div>
     {% endif %}
 
-    <p><a href="/">← Back to Home</a></p>
+    <p><a href="{{ url_for('home') }}">← Back to Home</a></p>
 </body>
 </html>

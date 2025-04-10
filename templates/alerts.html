@@ -1,23 +1,45 @@
 <!DOCTYPE html>
-<html>
-<head><title>Alerts</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Alerts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
 <body>
     <h1>All Alerts</h1>
-    <table border="1">
-        <tr><th>Email</th><th>Field</th><th>Operator</th><th>Value</th><th>Status</th><th>Actions</th></tr>
-        {% for alert in alerts %}
-        <tr>
-            <td>{{ alert.user_email }}</td>
-            <td>{{ alert.condition.field }}</td>
-            <td>{{ alert.condition.operator }}</td>
-            <td>{{ alert.condition.value }}</td>
-            <td>{{ "Triggered" if alert.triggered else "Pending" }}</td>
-            <td>
-                <a href="{{ url_for('edit_alert', alert_id=alert._id) }}">Edit</a> |
-                <a href="{{ url_for('delete_alert', alert_id=alert._id) }}">Delete</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+
+    {% if alerts %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Field</th>
+                    <th>Operator</th>
+                    <th>Value</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alert in alerts %}
+                <tr>
+                    <td>{{ alert.user_email }}</td>
+                    <td>{{ alert.condition.field }}</td>
+                    <td>{{ alert.condition.operator }}</td>
+                    <td>{{ alert.condition.value }}</td>
+                    <td>{{ "Triggered" if alert.triggered else "Pending" }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_alert', alert_id=alert._id) }}">Edit</a> |
+                        <a href="{{ url_for('delete_alert', alert_id=alert._id) }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No alerts found.</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('home') }}">← Back to Home</a></p>
 </body>
 </html>
