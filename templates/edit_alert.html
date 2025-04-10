@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Alert</title></head>
+<body>
+    <h1>Edit Alert</h1>
+    <form method="POST">
+        <label>Email:</label><br>
+        <input type="text" name="user_email" value="{{ alert.user_email }}"><br><br>
+
+        <label>Field:</label><br>
+        <input type="text" name="field" value="{{ alert.condition.field }}"><br><br>
+
+        <label>Operator:</label><br>
+        <select name="operator">
+            <option value="eq" {% if alert.condition.operator == 'eq' %}selected{% endif %}>Equal</option>
+            <option value="gt" {% if alert.condition.operator == 'gt' %}selected{% endif %}>Greater Than</option>
+            <option value="gte" {% if alert.condition.operator == 'gte' %}selected{% endif %}>Greater Than or Equal</option>
+            <option value="lt" {% if alert.condition.operator == 'lt' %}selected{% endif %}>Less Than</option>
+            <option value="lte" {% if alert.condition.operator == 'lte' %}selected{% endif %}>Less Than or Equal</option>
+        </select><br><br>
+
+        <label>Value:</label><br>
+        <input type="number" name="value" value="{{ alert.condition.value }}"><br><br>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

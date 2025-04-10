@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Alert</title>
+</head>
+<body>
+    <h1>Create a New Alert</h1>
+    <form method="POST">
+        <label for="user_email">Your Email:</label><br>
+        <input type="email" name="user_email" required><br><br>
+
+        <label for="field">Field (e.g., age):</label><br>
+        <input type="text" name="field" required><br><br>
+
+        <label for="operator">Condition:</label><br>
+        <select name="operator">
+            <option value="eq">= Equal</option>
+            <option value="gt">> Greater Than</option>
+            <option value="gte">≥ Greater Than or Equal</option>
+            <option value="lt">< Less Than</option>
+            <option value="lte">≤ Less Than or Equal</option>
+        </select><br><br>
+
+        <label for="value">Value:</label><br>
+        <input type="number" name="value" required><br><br>
+
+        <button type="submit">Create Alert</button>
+    </form>
+
+    {% if alert_success %}
+        <p style="color:green;">{{ alert_success }}</p>
+    {% elif alert_error %}
+        <p style="color:red;">{{ alert_error }}</p>
+    {% endif %}
+
+    <p><a href="/">← Back to Home</a></p>
+</body>
+</html>
