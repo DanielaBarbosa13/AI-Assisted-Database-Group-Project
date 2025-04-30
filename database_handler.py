@@ -1,5 +1,6 @@
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from data_cleaning import run_all_cleaning # database cleaning functions
 
 class DatabaseHandler:
     def __init__(self, mongo):
@@ -42,3 +43,8 @@ class DatabaseHandler:
     def mark_alert_triggered(self, alert_id):
         """Marks an alert as triggered."""
         self.mongo.db.alerts.update_one({"_id": ObjectId(alert_id)}, {"$set": {"triggered": True}})
+
+    def clean_and_optimize_data(self):
+        """Runs data cleaning and optimization routines."""
+        run_all_cleaning(self.mongo)
+        return "Database cleaning and optimization complete."
