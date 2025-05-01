@@ -8,9 +8,11 @@ from database_handler import DatabaseHandler
 from ai_agent import AIAgent
 
 # Load environment variables
-load_dotenv()
+#load_dotenv()
 
-OPENAI_API_KEY = os.getenv("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")
+#OPENAI_API_KEY = os.getenv("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")
+OPENAI_API_KEY = "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"
+
 if not OPENAI_API_KEY:
     raise ValueError("Missing OpenAI API Key. Set OPENAI_API_KEY as an environment variable.")
 
