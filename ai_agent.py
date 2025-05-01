@@ -2,7 +2,7 @@ import re
 import openai
 import os
 from dotenv import load_dotenv
-
+import json
 # Load environment variables from .env file
 #load_dotenv()
 
@@ -21,30 +21,64 @@ class AIAgent:
         self.db_handler = db_handler
 
     def process_query(self, query):
-        """Determines whether the query is for adding a new user or searching the database."""
-        print(f"Processing query: {query}")  # Debug print - inspect the query passed to AI agent
-        if query.lower().startswith("add a new user"):
-            return self.insert_data(query)  # Process adding a new user
-        else:
-            print(f"Searching for query: {query}")  # Debug print - log query before searching
-            search_results = self.db_handler.search_user(query)
-            print(f"Search results after database query: {search_results}")  # Debug print - log the results
+        """Processes user input: decides whether to add a user or search the database."""
+        lowered = query.lower()
+
+        if any(p in lowered for p in ["add a user", "new user", "create a user", "insert a user"]):
+            return self.insert_data(query)
+
+        # Conversational search via GPT
+        try:
+            messages = [
+                {"role": "system",
+                 "content": "Extract search filters (like name and age) from the user's message. Respond with JSON. Example: {\"name\": \"John\", \"age\": {\"$gt\": 30}}"},
+                {"role": "user", "content": query}
+            ]
+
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=messages,
+                temperature=0
+            )
+
+            filters_json = response['choices'][0]['message']['content']
+            filters = json.loads(filters_json)
+
+            search_results = self.db_handler.search_user(filters=filters)
             return self.generate_ai_response(query, search_results)
 
+        except Exception as e:
+            return f"AI Search Error: {str(e)}"
+
     def insert_data(self, query):
-        """Extracts the data from the query and inserts it into the database."""
-        match = re.match(r"Add a new user: Name: ([\w\s]+), Email: ([\w\.]+@[\w]+\.[a-z]{2,3}), Age: (\d+)", query)
+        """Uses OpenAI to extract structured user info from a conversational query and insert into the DB."""
+        try:
+            messages = [
+                {"role": "system",
+                 "content": "Extract name, email, and age from the user's input and respond in JSON like this: {\"name\": \"John Doe\", \"email\": \"john@example.com\", \"age\": 30}"},
+                {"role": "user", "content": query}
+            ]
 
-        if match:
-            name = match.group(1)
-            email = match.group(2)
-            age = int(match.group(3))
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=messages,
+                temperature=0
+            )
 
-            # Insert the data into MongoDB
-            return self.db_handler.insert_user(name, email, age)
+            extracted = response['choices'][0]['message']['content']
+            user_data = json.loads(extracted)
 
-        return "Could not parse the query. Please try again."
+            name = user_data.get("name")
+            email = user_data.get("email")
+            age = user_data.get("age")
 
+            if name and email and age:
+                return self.db_handler.insert_user(name, email, int(age))
+            else:
+                return "Failed to extract user information. Please rephrase your request."
+
+        except Exception as e:
+            return f"AI Error during data extraction: {str(e)}"
     @staticmethod
     def generate_ai_response(query, data):
         """Generates an AI response based on the search results."""
