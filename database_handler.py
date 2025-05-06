@@ -11,27 +11,21 @@ class DatabaseHandler:
         self.mongo.db.users.insert_one({"name": name, "email": email, "age": age})
         return f"New user {name} added successfully."
 
-    def search_user(self, query=None, filters=None):
-        """Searches for users based on filters or fallback to regex name search."""
-        if filters:
-            mongo_query = {}
+    def search_user(self, query):
+        """Searches for users in MongoDB that match the query."""
+        print(f"Original query: {query}")
+        search_results = list(self.mongo.db.users.find(
+            {"name": {"$regex": query, "$options": "i"}},
+            {"_id": 0}
+        ))
 
-            if "name" in filters:
-                mongo_query["name"] = {"$regex": filters["name"], "$options": "i"}
+        print(f"MongoDB Search Query: {search_results}")
 
-            if "age" in filters:
-                mongo_query["age"] = filters["age"]
+        if search_results:
+            return search_results
+        else:
+            return "No users found matching your query."
 
-            return list(self.mongo.db.users.find(mongo_query, {"_id": 0}))
-
-        # fallback basic name search
-        if query:
-            return list(self.mongo.db.users.find(
-                {"name": {"$regex": query, "$options": "i"}},
-                {"_id": 0}
-            ))
-
-        return []
     def create_alert(self, user_email, condition):
         """Inserts a new alert into the alerts collection."""
         alert = {

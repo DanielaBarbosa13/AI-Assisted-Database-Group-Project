@@ -8,11 +8,9 @@ from database_handler import DatabaseHandler
 from ai_agent import AIAgent
 
 # Load environment variables
-#load_dotenv()
+load_dotenv()
 
-#OPENAI_API_KEY = os.getenv("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")
-OPENAI_API_KEY = "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"
-
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     raise ValueError("Missing OpenAI API Key. Set OPENAI_API_KEY as an environment variable.")
 
@@ -36,6 +34,9 @@ class WebApp:
         self.app.add_url_rule('/alerts', 'alerts', self.alerts, methods=["GET"])
         self.app.add_url_rule('/edit_alert/<alert_id>', 'edit_alert', self.edit_alert, methods=["GET", "POST"])
         self.app.add_url_rule('/delete_alert/<alert_id>', 'delete_alert', self.delete_alert, methods=["GET"])
+        # Admin Panel + Data Cleaning Routes
+        self.app.add_url_rule('/admin', 'admin_panel', self.admin_panel, methods=["GET"])
+        self.app.add_url_rule('/admin/clean-data', 'clean_data_view', self.clean_data_view, methods=["GET"])
 
         # Start alert checker scheduler
         self.start_scheduler()
@@ -153,6 +154,13 @@ class WebApp:
             if matched_user:
                 self.db_handler.mark_alert_triggered(alert["_id"])
                 print(f"ALERT TRIGGERED for {alert['user_email']}: {matched_user}")
+
+    def admin_panel(self):
+        return render_template("admin_panel.html")
+
+    def clean_data_view(self):
+        message = self.db_handler.clean_and_optimize_data()
+        return render_template("clean_result.html", message=message)
 
     def run(self):
         self.app.run(debug=True)
