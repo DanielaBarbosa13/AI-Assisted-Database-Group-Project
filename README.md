@@ -66,7 +66,7 @@ In-person events and online gatherings related to the community
 ### 🚨 Reporting Issues
 If you experience or witness unacceptable behaviour, please report it by contacting the project maintainers at:
 
-📧 [INSERT EMAIL HERE]
+📧 security@ai-database.com
 
 All reports will be handled confidentially and with respect. We commit to investigating and addressing all reports promptly and fairly.
 
