@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cleaning Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container message">
+        <h3>{{ message }}</h3>
+        <a href="{{ url_for('admin_panel') }}">Back to Admin Panel</a>
+    </div>
+</body>
+</html>
