@@ -44,9 +44,10 @@
     <hr>
 
     <!-- Navigation Links -->
-    <p>
-        <a href="{{ url_for('create_alert') }}">+ Create New Alert</a> |
-        <a href="{{ url_for('alerts') }}">🔍 View All Alerts</a>
-    </p>
+    <div style="margin-bottom: 15px;">
+        <a href="{{ url_for('create_alert') }}" class="button">+ Create New Alert</a>
+        <a href="{{ url_for('alerts') }}" class="button">🔍 View All Alerts</a>
+        <a href="{{ url_for('admin_panel') }}" class="button">🛠 Admin Panel</a>
+    </div>
 </body>
 </html>

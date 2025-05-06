@@ -83,3 +83,14 @@ a {
 a:hover {
     text-decoration: underline;
 }
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.container.message {
+    text-align: center;
+}

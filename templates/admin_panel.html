@@ -2,16 +2,22 @@
 <html>
 <head>
     <title>Admin Panel</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <div class="container">
         <h2>Admin Tools</h2>
         <p>Click the button below to clean and optimize the user database.</p>
+
+        <!-- Clean Database Button -->
         <form action="{{ url_for('clean_data_view') }}" method="get">
             <button type="submit">Clean Database</button>
+        </form>
+
+        <!-- Back to Home Button -->
+        <form action="{{ url_for('home') }}" method="get">
+            <button type="submit">Back to Home</button>
         </form>
     </div>
 </body>
 </html>
-
